@@ -1,28 +1,28 @@
 #! /bin/bash
-clear
+
 echo
 echo "##############################################"
 echo "################# PING SWEEP #################"
 echo "##############################################"
 echo
-echo " The Script accept only a Network-IP as argument"
-echo " eg. ping_sweep 192.168.4.0"
+echo " The Script takes only a Subnet-IP as argument"
+echo " CIDR and VLSM are not suported. By Nzanoa !!!"
+echo " eg. bash ping_sweep 192.168.4.0"
 echo
 
 echo $1 > .ping_sweep_ip
 SUBNET=$(cat .ping_sweep_ip |cut -d "." -f 1,2,3)
 
+echo " Analyzing the ${SUBNET}.0/24 subdomain..."
+
 for BIT in {1..254}
 do
-    ping -c 1 ${SUBNET}.${BIT}
+    ping -c 1 ${SUBNET}.${BIT} 2>&1 > /dev/null
     if [ $? == "0" ]
     then
         echo "[*] ${SUBNET}.${BIT} Is Reachable"
         sleep 0.3
-    else
-        echo "[!] ${SUBNET}.${BIT} Is Unreachable"
     fi
-    echo
 done
 
 rm -rf .ping_sweep_ip
