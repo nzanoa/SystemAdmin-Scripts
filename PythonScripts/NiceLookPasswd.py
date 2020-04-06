@@ -18,7 +18,7 @@ header = """[[YELLOW]]
  The Script does not take any argument.
  Gives a nice/easy to understand look
  ot the file /etc/passwd. By Nzanoa.[[NC]]
- eg. [[LPURPLE]]python3 NiceLookPassword.py[[NC]]
+ eg. [[LPURPLE]]python3 NiceLookPasswd.py[[NC]]
 
 """
 # Replace color by ANSI COLOR CODE
