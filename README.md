@@ -1,1 +1,2 @@
-## Welcome to SystemAdmin Script
+## Welcome to SystemAdmin Scripts
+Important scripts for Linux SystemAdmin

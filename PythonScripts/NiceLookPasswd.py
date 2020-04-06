@@ -1,7 +1,7 @@
 #! /bin/python
 
 filename = '/etc/passwd'
-passwd = open(filename)
+passwd = open(filename, 'r')
 
 fields = { 0: "Username", 1: "Password", 2: "User-ID", 3: "Group-ID", 4: "Comments", 5: "Home-Dir", 6: "Shell" }
 
@@ -13,10 +13,10 @@ for line in passwd:
     else:
         for n in range(7):
             if n == 1 and parts[n] == 'x':
-                print "%s: %s" % (fields[n], 'encrypted')
+                print("{}: {}".format(fields[n], 'encrypted'))
             else:
-                print "%s: %s" % (fields[n], parts[n])
-        print "\n"
+                #print "%s: %s" % (fields[n], parts[n])
+                print("{}: {}".format(fields[n], parts[n]))
+        print("\n")
 
 passwd.close()
-
