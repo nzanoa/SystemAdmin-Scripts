@@ -1,4 +1,6 @@
-#! /bin/python
+#! /usr/bin/python3
+from signal import signal, SIGINT
+
 # Colors
 COLORS = {
     'NC': '\033[0m',
@@ -17,7 +19,7 @@ header = """[[YELLOW]]
 
  The Script does not take any argument.
  Gives a nice/easy to understand look
- ot the file /etc/passwd. By Nzanoa.[[NC]]
+ of the file /etc/passwd. By Nzanoa.[[NC]]
  eg. [[LPURPLE]]python3 NiceLookPasswd.py[[NC]]
 
 """
@@ -27,6 +29,16 @@ def ColorText(text):
         text = text.replace('[[' + color + ']]', COLORS[color])
     return text
 
+# Handle signal
+def handler(signal_received, frame):
+    # Handle any cleanup here
+    signal_error = "\n [-][[RED]] Exiting gracefully [[NC]]\n"
+    print(ColorText(signal_error))
+    exit(0)
+
+signal(SIGINT, handler)
+
+# Display header
 print(ColorText(header))
 try:
     # Load /etc/passwd
