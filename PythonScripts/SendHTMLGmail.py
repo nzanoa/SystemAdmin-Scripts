@@ -9,7 +9,7 @@ from getpass import getpass
 # Header
 header = """[[YELLOW]]
  #############################################
- ############## SEND EMAIL TEST ##############
+ ############## SEND HTML EMAIL ##############
  #############################################
 
  The Script will use a Gmail account to send
